@@ -31,7 +31,7 @@ var map = L.map('map').setView([0, 0], 1);
 
 // referenciar tiles
 L.tileLayer('maps/map_arteba/{z}/{x}/{y}.png', {
-    minZoom: 2,
+    minZoom: 1,
     maxZoom: 4,
     continuousWorld: false,
     noWrap: true,
@@ -66,7 +66,7 @@ var marker_3b = L.marker([-47.989922, -91.40625]).bindPopup('Exhibición 3B');
 
 var marker_1c = L.marker([-23.241346, 132.539063]).bindPopup('Exhibición 1C');
 
-var marker_2c = L.marker([-44.590467, 69.609375]).bindPopup('Exhibición 2C');
+
 
 // layer groups
 
@@ -74,7 +74,7 @@ var lg_a = L.layerGroup([marker_1a, marker_2a, marker_3a]);
 
 var lg_b = L.layerGroup([marker_1b, marker_2b, marker_3b]);
 
-var lg_c = L.layerGroup([marker_1c, marker_2c]);
+var lg_c = L.layerGroup([marker_1c]);
 
 var latlngs = [
 [-11.523088, -1.757813],
@@ -105,11 +105,28 @@ document.getElementById('select-location').addEventListener('click',function(e){
     let coords = e.target.value.split(",");
     if(e.target.value != "0"){
     map.flyTo(coords,4);
+    L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A').addTo(map);
     }
-    else {map.flyTo([0, 0],2)}
+    else {map.flyTo([0, 0],1)}
 })
 
-
+window.addEventListener('load', function() {
+    if(window.location.hash) {
+         var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+         if(hash == 'aqui1') {
+            map.flyTo([-11.523088, -1.757813],2);
+    L.marker([-11.523088, -1.757813]).bindPopup('Usted está aquí').addTo(map).openPopup();
+         } 
+         if(hash == 'aqui2') {
+            map.flyTo([-23.241346, 132.539063],2);
+    L.marker([-61.523088, 20.757813]).bindPopup('Usted está aquí').addTo(map).openPopup();
+         } 
+         if(hash == 'aqui3') {
+            map.flyTo([35.46067, -80.859375],2);
+    L.marker([-32.523088, 3.757813]).bindPopup('Usted está aquí').addTo(map).openPopup();
+         } 
+    }
+}, false);
 
 </script>
 
