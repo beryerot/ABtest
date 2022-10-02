@@ -114,15 +114,15 @@ window.addEventListener('load', function() {
     if(window.location.hash) {
          var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
          if(hash == 'aqui1') {
-            map.flyTo([-11.523088, -1.757813],2);
+            map.flyTo([-11.523088, -1.757813],3);
     L.marker([-11.523088, -1.757813]).bindPopup('Usted está aquí').addTo(map).openPopup();
          } 
          if(hash == 'aqui2') {
-            map.flyTo([-23.241346, 132.539063],2);
+            map.flyTo([-23.241346, 132.539063],3);
     L.marker([-23.241346, 132.539063]).bindPopup('Usted está aquí').addTo(map).openPopup();
          } 
          if(hash == 'aqui3') {
-            map.flyTo([35.46067, -80.859375],2);
+            map.flyTo([35.46067, -80.859375],3);
     L.marker([35.46067, -80.859375]).bindPopup('Usted está aquí').addTo(map).openPopup();
          } 
     }
