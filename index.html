@@ -17,7 +17,7 @@
 <!-- NAVBAR -->    
 <nav class="navbar bg-white border-bottom border-dark fixed-top">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">arteba</span>
+          <span class="navbar-brand mb-0 h1" style="user-select: none">arteba</span>
           <button type="button" class="btn btn-outline-dark" value="0" onclick="mapaCompleto()">ver mapa completo</button>			
         </div>
       </nav>
@@ -60,7 +60,6 @@ L.tileLayer('maps/map_arteba/{z}/{x}/{y}.png', {
     continuousWorld: false,
     noWrap: true,
     crs: L.CRS.Simple,
-
 }).addTo(map)
 
 map.setMaxBounds(new L.LatLngBounds(
