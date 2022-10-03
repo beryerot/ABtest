@@ -4,7 +4,6 @@ background-color: #FF008C;}
 .verde:active, .verde:hover{
     background-color: #65FF88;}
 
-    .negro:active, .negro:hover{
-        background-color: black;
-        color: white}
-    
+.negro:active, .negro:hover{
+    background-color: black;
+    color: white;}
