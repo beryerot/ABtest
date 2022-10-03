@@ -18,6 +18,7 @@
 <nav class="navbar bg-white border-bottom border-dark fixed-top">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">arteBA</span>
+          <button type="button" class="btn btn-outline-dark" value="0" onclick="mapaCompleto()">Ver mapa completo</button>			
         </div>
       </nav>
 
@@ -28,10 +29,10 @@
 
 <!--  BOTONERA -->
 <div class="list-group" name="select-location" id="select-location" style="height:40vh; overflow: scroll">
-    <button type="button" class="list-group-item list-group-item disabled" aria-disabled="true">Seleccionar exhibición</button>
-    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición A</button>
-    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición B</button>
-    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición C</button>
+    <button type="button" class="list-group-item list-group-item disabled" aria-disabled="true">Seleccionar galería</button>
+    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813" onclick="galeria1()">Aldo de Sousa (Buenos Aires)</button>
+    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188"  onclick="galeria2()">Acéfala (Buenos Aires)</button>
+    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375"  onclick="galeria3()">Aura x VTV (Buenos Aires)</button>
     <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición D</button>
     <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición E</button>
     <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición F</button>    
@@ -41,7 +42,7 @@
     <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición D</button>
     <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición E</button>
     <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición F</button>    
-    <button type="button" class="list-group-item list-group-item-action" value="0">Ver mapa completo</button>			
+    
   </div>
 </div>
 <script type="text/javascript">
@@ -80,11 +81,11 @@ marker.on('dragend', function(e) {
     marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
 } );
 
-var marker_1a = L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A');
+function galeria1() {var marker_1a = L.marker([-11.523088, -1.757813]).bindPopup('Aldo de Sousa (Buenos Aires)').addTo(map).openPopup();}
 
-var marker_2a = L.marker([37.71859, 37.617188]).bindPopup('Exhibición 2A');
+function galeria2() {var marker_2a = L.marker([37.71859, 37.617188]).bindPopup('Acéfala (Buenos Aires)').addTo(map).openPopup();}
 
-var marker_3a = L.marker([35.46067, -80.859375]).bindPopup('Exhibición 3A');
+function galeria3() {var marker_3a = L.marker([35.46067, -80.859375]).bindPopup('Aura x VTV (Buenos Aires)').addTo(map).openPopup();}
 
 var marker_1b = L.marker([57.326521, -65.390625]).bindPopup('Exhibición 1B');
 
@@ -103,6 +104,8 @@ document.getElementById('select-location').addEventListener('click',function(e){
     }
     else {map.flyTo([0, 0],1)}
 })
+
+function mapaCompleto(){map.flyTo([0, 0],1)}
 
 // Función Usted está aquí
 
