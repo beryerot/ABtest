@@ -1,3 +1,8 @@
+<!-- fijar el seleccionar galerías
+    armar mapa con diferntes png
+
+ -->
+
 <!DOCTYPE html>
 <html style="height: 100%; margin: 0";>
 <head>
@@ -23,7 +28,7 @@
       </nav>
 
 <!-- MAPA -->
-<div id="map" style="height: 60vh; margin: 0; background: #FFFFFF">
+<div id="map" style="height: 60vh; margin: 0; background: #FFFFFF; max-width: 100wh">
 
 </div>
 
@@ -51,11 +56,11 @@
 var mapSW = [0, 4096],
     mapNE = [4096, 0]
 
-var map = L.map('map', { zoomControl: false, attributionControl: false }).setView([0, 0], 1);
+var map = L.map('map', { zoomControl: false, attributionControl: false }).setView([0, 0], 0);
 
 // referenciar tiles
 L.tileLayer('maps/map_arteba/{z}/{x}/{y}.png', {
-    minZoom: 1,
+    minZoom: 0,
     maxZoom: 4,
     continuousWorld: false,
     noWrap: true,
