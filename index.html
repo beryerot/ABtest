@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html style="height: 100%; margin: 0";>
 <head>
+<meta charset="UTF-8"/>
 <meta http-equiv="Expires" content="0">
 <meta http-equiv="Last-Modified" content="0">
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
@@ -15,23 +16,23 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="scripts/leaflet/leaflet.css">
-<link rel="stylesheet" href="/styles.css">
-<!-- <style type="text/css">
+<link rel="stylesheet" href="/arteBA/styles.css">
+<style type="text/css">
     @font-face {
-        font-family: "Dapper Regular";
-        src: url(/font/NTDapper-Regular.otf);
+        font-family: 'Dapper Regular';
+        src: url(/arteBA/font/NTDapper-Regular.otf);
     }
-</style> -->
+</style>
 <script src="scripts/leaflet/leaflet.js"></script>
 <script type="application/javascript">document.interestCohort = null;</script>
 </head>
-<body  style="max-height: 100vh;">
+<body  style="max-height: 100v; font-family: 'Dapper Regular'">
     
 <!-- NAVBAR -->    
 <nav class="navbar bg-white border-bottom border-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/arteba.gif" width="90" height="30" alt="arteba">
+                <img src="/arteBA/logo/arteba.gif" width="90" height="30" alt="arteba">
               </a>
           <button type="button" class="btn btn-outline-dark" value="0" onclick="mapaCompleto()">ver mapa completo</button>			
         </div>
@@ -76,17 +77,17 @@ L.tileLayer('maps/map_arteba/{z}/{x}/{y}.png', {
     crs: L.CRS.Simple,
 }).addTo(map)
 
-map.setMaxBounds(new L.LatLngBounds(
+/* map.setMaxBounds(new L.LatLngBounds(
 
     map.unproject(mapSW, map.getMaxZoom()),
     map.unproject(mapNE, map.getMaxZoom())
-));
+)); */
 
 // Markers and popups
 
 var marker = L.marker([0, 0], {
     draggable: true,
-})/* .addTo(map) */;
+}).addTo(map);
 marker.bindPopup('');
 
 marker.on('dragend', function(e) {
