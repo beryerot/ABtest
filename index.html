@@ -12,18 +12,36 @@
 <link rel="stylesheet" href="scripts/leaflet/leaflet.css">
 <script src="scripts/leaflet/leaflet.js"></script>
 </head>
-<body style="height: 100%; margin: 0";>
-	<div name="select-location" id="select-location" style="z-index: 1; text-align: center; padding: 10px;">
-		<p style="margin: 10px">Seleccione una exhibición</p>
-        <div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" value="-11.523088, -1.757813">Exhibición A</button>
-		<button type="button" class="btn btn-secondary" value="37.71859, 37.617188">Exhibición B</button>	
-		<button type="button" class="btn btn-secondary" value="35.46067, -80.859375">Exhibición C</button>
-        <button type="button" class="btn btn-outline-secondary" value="0">Ver mapa completo</button>			
-    </div>
-    </div>
-<div id="map" style="width: 100%; height: 90%; margin: 0; background: #FFFFFF">
+<body  style="max-height: 100vh;">
+    
+<!-- NAVBAR -->    
+<nav class="navbar bg-white border-bottom border-dark fixed-top">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">arteBA</span>
+        </div>
+      </nav>
 
+<!-- MAPA -->
+<div id="map" style="height: 60vh; margin: 0; background: #FFFFFF">
+
+</div>
+
+<!--  BOTONERA -->
+<div class="list-group" name="select-location" id="select-location" style="height:40vh; overflow: scroll">
+    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición A</button>
+    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición B</button>
+    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición C</button>
+    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición D</button>
+    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición E</button>
+    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición F</button>    
+    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición A</button>
+    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición B</button>
+    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición C</button>
+    <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición D</button>
+    <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición E</button>
+    <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición F</button>    
+    <button type="button" class="list-group-item list-group-item-action" value="0">Ver mapa completo</button>			
+  </div>
 </div>
 <script type="text/javascript">
 
@@ -31,7 +49,7 @@
 var mapSW = [0, 4096],
     mapNE = [4096, 0]
 
-var map = L.map('map').setView([0, 0], 1);
+var map = L.map('map', { zoomControl: false, attributionControl: false }).setView([-10, 0], 1);
 
 // referenciar tiles
 L.tileLayer('maps/map_arteba/{z}/{x}/{y}.png', {
@@ -56,6 +74,11 @@ var marker = L.marker([0, 0], {
 })/* .addTo(map) */;
 marker.bindPopup('');
 
+marker.on('dragend', function(e) {
+    // alert(marker.getLatLng().toString());
+    marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
+} );
+
 var marker_1a = L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A');
 
 var marker_2a = L.marker([37.71859, 37.617188]).bindPopup('Exhibición 2A');
@@ -71,48 +94,16 @@ var marker_3b = L.marker([-47.989922, -91.40625]).bindPopup('Exhibición 3B');
 var marker_1c = L.marker([-23.241346, 132.539063]).bindPopup('Exhibición 1C');
 
 
-
-// layer groups
-
-var lg_a = L.layerGroup([marker_1a, marker_2a, marker_3a]);
-
-var lg_b = L.layerGroup([marker_1b, marker_2b, marker_3b]);
-
-var lg_c = L.layerGroup([marker_1c]);
-
-var latlngs = [
-[-11.523088, -1.757813],
-[37.71859, 37.617188],
-[35.46067, -80.859375]
-];
-
-var polyline = L.polyline(latlngs, {color: 'red'});
-
-var overlays = {
-    "Exhibiciones A" : lg_a,
-    "Exhibiciones B" : lg_b,
-    "Exhibiciones C" : lg_c,
-    "Recorrido 1" : polyline,
-}
-
-// Layer controls
-
-L.control.layers(null, overlays).addTo(map);
-
-
-marker.on('dragend', function(e) {
-    // alert(marker.getLatLng().toString());
-    marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
-} );
-
 document.getElementById('select-location').addEventListener('click',function(e){
     let coords = e.target.value.split(",");
     if(e.target.value != "0"){
-    map.flyTo(coords,4);
+    map.flyTo(coords,2);
     L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A').addTo(map);
     }
     else {map.flyTo([0, 0],1)}
 })
+
+// Función Usted está aquí
 
 window.addEventListener('load', function() {
     if(window.location.hash) {
