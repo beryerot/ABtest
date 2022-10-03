@@ -28,6 +28,7 @@
 
 <!--  BOTONERA -->
 <div class="list-group" name="select-location" id="select-location" style="height:40vh; overflow: scroll">
+    <button type="button" class="list-group-item list-group-item disabled" aria-disabled="true">Seleccionar exhibición</button>
     <button type="button" class="list-group-item list-group-item-action" value="-11.523088, -1.757813">Exhibición A</button>
     <button type="button" class="list-group-item list-group-item-action" value="37.71859, 37.617188">Exhibición B</button>
     <button type="button" class="list-group-item list-group-item-action" value="35.46067, -80.859375">Exhibición C</button>
@@ -98,7 +99,7 @@ document.getElementById('select-location').addEventListener('click',function(e){
     let coords = e.target.value.split(",");
     if(e.target.value != "0"){
     map.flyTo(coords,2);
-    L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A').addTo(map);
+    /* L.marker([-11.523088, -1.757813]).bindPopup('Exhibición 1A').addTo(map); */
     }
     else {map.flyTo([0, 0],1)}
 })
