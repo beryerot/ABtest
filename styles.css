@@ -1,11 +1,33 @@
-.rosa:active, .rosa:hover{
-background-color: #FF008C;
-color: white;}
+@font-face {
+    font-family: 'Dapper Regular';
+    src: url(/arteBA/font/NTDapper-Regular.otf);}
+@font-face {
+    font-family: 'Dapper Bold';
+    src: url(/arteBA/font/NTDapper-Bold.otf);
+}
 
-.verde:active, .verde:hover{
-    background-color: #2ad688;
-    color: white;}
+.Rosa:active, .Rosa:hover{
+background-color: #FB98CE;
+color: #000000}
 
-.negro:active, .negro:hover{
-    background-color: black;
-    color: white;}
+.Verde:active, .Verde:hover{
+    background-color: #AAFF88;
+    color: #000000}
+
+.Negro:active, .Negro:hover{
+    background-color: #ccc;
+    color: #000000}
+
+.list-group button{
+        border: 0 none;
+    }
+
+.leaflet-popup-content {
+        font-family: 'Dapper Bold';
+        font-size: 16px;
+        text-align: center;
+        }
+
+.leaflet-popup-close-button{
+    display: none;
+}
