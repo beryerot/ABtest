@@ -714,7 +714,7 @@ marker.on('dragend', function(e) {
     // Función para manejar la agitación
     function handleShake() {
         // Realiza la acción que deseas cuando se agita el teléfono
-        map.flyTo([0, 0],0);;
+        map.flyTo([0, 0],1);;
     }
 
     // Agregar un event listener para el evento 'shake'
