@@ -705,32 +705,23 @@ marker.on('dragend', function(e) {
     marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
 } );
 
+    // Inicializa la detección de agitación usando shake.js
+    var myShakeEvent = new Shake({
+        threshold: 20, // Umbral de agitación
+        timeout: 1000 // Tiempo de espera entre agitaciones
+    });
+
     // Función para manejar la agitación
-    function handleShake(event) {
+    function handleShake() {
         // Realiza la acción que deseas cuando se agita el teléfono
-        map.flyTo([0, 0],0);
+        map.flyTo([0, 0],0);;
     }
 
-    // Agregar un event listener para el evento 'devicemotion'
-    window.addEventListener('devicemotion', function(event) {
-        // Accede a los datos de la aceleración en los ejes x, y, z
-        var acceleration = event.accelerationIncludingGravity;
+    // Agregar un event listener para el evento 'shake'
+    myShakeEvent.start();
+    window.addEventListener('shake', handleShake, false);
 
-        // Calcula la aceleración total
-        var totalAcceleration = Math.sqrt(
-            Math.pow(acceleration.x, 2) +
-            Math.pow(acceleration.y, 2) +
-            Math.pow(acceleration.z, 2)
-        );
 
-        // Define un umbral de agitación (ajústalo según tus necesidades)
-        var shakeThreshold = 20;
-
-        // Si la aceleración total supera el umbral, maneja la agitación
-        if (totalAcceleration > shakeThreshold) {
-            handleShake();
-        }
-    });
 
 // Geolocalización
 
