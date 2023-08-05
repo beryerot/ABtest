@@ -640,40 +640,7 @@ const galerias = [
         "coordenadas": "35.782292, -78.046875"
     }
 ]
-
-const plazas = [
-    [
-        {
-            "plaza": "plaza1",
-            "coordenadas": "60.382757, -41.132813"
-        },
-        {
-            "plaza": "plaza2",
-            "coordenadas": "62.724032, 13.710938"
-        },
-        {
-            "plaza": "plaza3",
-            "coordenadas": "15.948499, -82.617188"
-        },
-        {
-            "plaza": "plaza4",
-            "coordenadas": "31.629919, 22.5"
-        },
-        {
-            "plaza": "plaza5",
-            "coordenadas": "16.62285, 81.5625"
-        },
-        {
-            "plaza": "plaza6",
-            "coordenadas": "-18.563016, -108.808594"
-        },
-        {
-            "plaza": "plaza7",
-            "coordenadas": "-42.535982, 90"
-        }
-    ]
-]
-
+    
 /* CREA BOTONERA */
 
     for (const galeria of galerias) {
@@ -700,7 +667,7 @@ function popup (gal, cor) {
 
 
 // FUNCION VER MAPA COMPLETO
-function mapaCompleto(){map.flyTo([0, 0],0)};
+
 
 // CREA MAPA
 var mapSW = [-82, -270],
@@ -738,7 +705,41 @@ marker.on('dragend', function(e) {
     marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
 } );
 
+    // Función para manejar la agitación
+    function handleShake(event) {
+        // Realiza la acción que deseas cuando se agita el teléfono
+        map.flyTo([0, 0],0);
+    }
 
+    // Agregar un event listener para el evento 'devicemotion'
+    window.addEventListener('devicemotion', function(event) {
+        // Accede a los datos de la aceleración en los ejes x, y, z
+        var acceleration = event.accelerationIncludingGravity;
+
+        // Calcula la aceleración total
+        var totalAcceleration = Math.sqrt(
+            Math.pow(acceleration.x, 2) +
+            Math.pow(acceleration.y, 2) +
+            Math.pow(acceleration.z, 2)
+        );
+
+        // Define un umbral de agitación (ajústalo según tus necesidades)
+        var shakeThreshold = 20;
+
+        // Si la aceleración total supera el umbral, maneja la agitación
+        if (totalAcceleration > shakeThreshold) {
+            handleShake();
+        }
+    });
+
+// Geolocalización
+
+/* navigator.geolocation.getCurrentPosition(function(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+    var marker = L.marker([latitude, longitude]).addTo(mymap);
+}) */
 
 /* BUSCADOR */
 
