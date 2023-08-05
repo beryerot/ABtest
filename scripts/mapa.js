@@ -705,21 +705,6 @@ marker.on('dragend', function(e) {
     marker.getPopup().setContent('Clicked' + marker.getLatLng().toString()).openOn(map)
 } );
 
-    // Inicializa la detección de agitación usando shake.js
-    var myShakeEvent = new Shake({
-        threshold: 20, // Umbral de agitación
-        timeout: 1000 // Tiempo de espera entre agitaciones
-    });
-
-    // Función para manejar la agitación
-    function handleShake() {
-        // Realiza la acción que deseas cuando se agita el teléfono
-        map.flyTo([0, 0],2);;
-    }
-
-    // Agregar un event listener para el evento 'shake'
-    myShakeEvent.start();
-    window.addEventListener('shake', handleShake, false);
 
 
 
